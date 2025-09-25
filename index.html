@@ -26,6 +26,14 @@
         .logo {
             font-size: 24px;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
         }
 
         .nav-links {
@@ -160,6 +168,19 @@
         .sidebar li {
             padding: 8px 0;
             border-bottom: 1px solid #eee;
+        }
+
+        /* Сделать ссылки в Quick Links чёрными */
+        .sidebar a {
+            color: #000;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+            padding: 6px 0;
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
         }
 
         .gallery-section {
@@ -297,7 +318,11 @@
 <body>
     <header class="header">
         <div class="nav-container">
-            <div class="logo">My Portfolio</div>
+            <div class="logo">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/moon-symbol.png" 
+                     alt="Moon Logo">
+                My Portfolio
+            </div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
@@ -352,11 +377,12 @@
             <div class="sidebar">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li>My Story</li>
-                    <li>Skills</li>
-                    <li>Experience</li>
-                    <li>Education</li>
-                    <li>Hobbies</li>
+                    <!-- Пустые ссылки: кликаются, но не переходят -->
+                    <li><a href="javascript:void(0)">My Story</a></li>
+                    <li><a href="javascript:void(0)">Skills</a></li>
+                    <li><a href="javascript:void(0)">Experience</a></li>
+                    <li><a href="javascript:void(0)">Education</a></li>
+                    <li><a href="javascript:void(0)">Hobbies</a></li>
                 </ul>
             </div>
             <div class="main-content">
@@ -371,64 +397,55 @@
     <section class="gallery-section" id="gallery">
         <h2 class="section-title">My Work Gallery</h2>
         <div class="gallery-container">
-            <div class="gallery-item">
-                Project 1
+            <div class="gallery-item"> Project 1
                 <div class="gallery-caption">
                     <h4>My First Website</h4>
                     <p>Simple HTML/CSS site</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                Project 2
+            <div class="gallery-item"> Project 2
                 <div class="gallery-caption">
                     <h4>Restaurant Site</h4>
                     <p>Menu and contact page</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                Project 3
+            <div class="gallery-item"> Project 3
                 <div class="gallery-caption">
                     <h4>Personal Blog</h4>
                     <p>CSS Grid layout</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                Project 4
+            <div class="gallery-item"> Project 4
                 <div class="gallery-caption">
                     <h4>Business Card</h4>
                     <p>Flexbox design</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                Project 5
+            <div class="gallery-item"> Project 5
                 <div class="gallery-caption">
                     <h4>Photo Gallery</h4>
                     <p>Image showcase</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                Project 6
+            <div class="gallery-item"> Project 6
                 <div class="gallery-caption">
                     <h4>Landing Page</h4>
                     <p>Marketing website</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                Project 7
+            <div class="gallery-item"> Project 7
                 <div class="gallery-caption">
                     <h4>Form Practice</h4>
                     <p>Contact forms</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                Project 8
+            <div class="gallery-item"> Project 8
                 <div class="gallery-caption">
                     <h4>CSS Animation</h4>
                     <p>Moving elements</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                Project 9
+            <div class="gallery-item"> Project 9
                 <div class="gallery-caption">
                     <h4>Responsive Site</h4>
                     <p>Mobile-friendly</p>
