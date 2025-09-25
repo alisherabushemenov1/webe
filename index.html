@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .cards-section {
+            padding: 50px 20px;
+            background-color: #f5f5f5;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .cards-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            flex: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 150px;
+            background-color: #e9ecef; 
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            display: block;
+        }
+
+        .card h3 {
+            margin: 0 0 15px 0;
+            font-size: 20px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            align-self: center;
+        }
+
+        .card button:hover {
+            background-color: #0056b3;
+        }
+
+        .about-section {
+            padding: 50px 20px;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-areas: 
+                "sidebar main-content";
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .main-content {
+            grid-area: main-content;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .gallery-section {
+            padding: 50px 20px;
+            background-color: #f5f5f5;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 200px;
+            background-color: #28a745;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .portfolio-section {
+            padding: 50px 20px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-areas: "projects info";
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .projects-area {
+            grid-area: projects;
+        }
+
+        .info-area {
+            grid-area: info;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .project-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-title {
+            font-size: 22px;
+            margin: 0;
+        }
+
+        .project-tech {
+            background-color: #e9ecef;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 10px;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .project-button {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .project-button.primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .project-button.secondary {
+            background-color: white;
+            color: #007bff;
+            border: 1px solid #007bff;
+        }
+
+        .project-button:hover {
+            opacity: 0.8;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">My Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="cards-section" id="services">
+        <h2 class="section-title">My Services</h2>
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://picsum.photos/seed/webdesign/800/600"
+                         alt="Example of a modern website design"
+                         loading="lazy">
+                </div>
+                <h3>Web Design</h3>
+                <p>I create beautiful and modern websites that look great on all devices.</p>
+                <button>Learn More</button>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://picsum.photos/seed/development/800/600"
+                         alt="Web application development process"
+                         loading="lazy">
+                </div>
+                <h3>Web Development</h3>
+                <p>I build fast and reliable websites using the latest web technologies.</p>
+                <button>Learn More</button>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://picsum.photos/seed/support/800/600"
+                         alt="Website support and maintenance"
+                         loading="lazy">
+                </div>
+                <h3>Website Support</h3>
+                <p>I provide ongoing support and maintenance for your website.</p>
+                <button>Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="main-layout">
+            <div class="sidebar">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li>My Story</li>
+                    <li>Skills</li>
+                    <li>Experience</li>
+                    <li>Education</li>
+                    <li>Hobbies</li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <h2>Hello, I'm a Web Developer</h2>
+                <p>I love creating websites and web applications. I have been learning web development for the past year and I'm excited to share my work with you.</p>
+                <p>I specialize in HTML, CSS, and JavaScript. I'm always eager to learn new technologies and improve my skills.</p>
+                <p>When I'm not coding, I enjoy reading about new web development trends and working on personal projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section" id="gallery">
+        <h2 class="section-title">My Work Gallery</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                Project 1
+                <div class="gallery-caption">
+                    <h4>My First Website</h4>
+                    <p>Simple HTML/CSS site</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                Project 2
+                <div class="gallery-caption">
+                    <h4>Restaurant Site</h4>
+                    <p>Menu and contact page</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                Project 3
+                <div class="gallery-caption">
+                    <h4>Personal Blog</h4>
+                    <p>CSS Grid layout</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                Project 4
+                <div class="gallery-caption">
+                    <h4>Business Card</h4>
+                    <p>Flexbox design</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                Project 5
+                <div class="gallery-caption">
+                    <h4>Photo Gallery</h4>
+                    <p>Image showcase</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                Project 6
+                <div class="gallery-caption">
+                    <h4>Landing Page</h4>
+                    <p>Marketing website</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                Project 7
+                <div class="gallery-caption">
+                    <h4>Form Practice</h4>
+                    <p>Contact forms</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                Project 8
+                <div class="gallery-caption">
+                    <h4>CSS Animation</h4>
+                    <p>Moving elements</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                Project 9
+                <div class="gallery-caption">
+                    <h4>Responsive Site</h4>
+                    <p>Mobile-friendly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio-section" id="portfolio">
+        <h2 class="section-title">My Best Projects</h2>
+        <div class="portfolio-grid">
+            <div class="projects-area">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Recipe Website</h3>
+                        <span class="project-tech">HTML/CSS</span>
+                    </div>
+                    <p>A simple recipe website where users can browse different recipes. I used CSS Grid for the layout and Flexbox for the recipe cards.</p>
+                    <div class="project-actions">
+                        <button class="project-button primary">View Site</button>
+                        <button class="project-button secondary">Code</button>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Todo List App</h3>
+                        <span class="project-tech">JavaScript</span>
+                    </div>
+                    <p>My first JavaScript project! Users can add, delete, and mark tasks as complete. I learned how to manipulate the DOM and handle events.</p>
+                    <div class="project-actions">
+                        <button class="project-button primary">Try It</button>
+                        <button class="project-button secondary">GitHub</button>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">School Project</h3>
+                        <span class="project-tech">Flexbox</span>
+                    </div>
+                    <p>A responsive website about my favorite hobby. This was my first time using Flexbox properly and I'm proud of how it turned out.</p>
+                    <div class="project-actions">
+                        <button class="project-button primary">See Demo</button>
+                        <button class="project-button secondary">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-area">
+                <h3>About My Work</h3>
+                <p><strong>5</strong> Projects Completed</p>
+                <p><strong>Learning</strong> Every Day</p>
+                <p><strong>HTML</strong> Pretty Good</p>
+                <p><strong>CSS</strong> Still Learning</p>
+                <p><strong>JavaScript</strong> Beginner</p>
+
+                <h3>My Skills</h3>
+                <ul>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>Flexbox</li>
+                    <li>CSS Grid</li>
+                    <li>Basic JavaScript</li>
+                    <li>Responsive Design</li>
+                </ul>
+
+                <h3>Contact Me</h3>
+                <p>I'm looking for my first job as a web developer. Please contact me if you have any opportunities!</p>
+                <button class="project-button primary" style="width: 100%; margin-top: 10px;">Send Email</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contact">
+        <h3>Thanks for visiting!</h3>
+        <p>Made by me with HTML, CSS, Flexbox and Grid</p>
+        <p>&copy; Alisher's Portfolio</p>
+    </footer>
+</body>
+</html>
